@@ -25,9 +25,10 @@ public class HeroesTable {
 
         DynamoDB dynamoDB = new DynamoDB(client);
 
-        String tableName = "Heroes_Table";
+        String tableName = "Heroes_Table_01";
 
         try {
+            System.out.println("Criando tabela, aguarde...");
             Table table = dynamoDB.createTable(tableName,
                     Arrays.asList(new KeySchemaElement("id", KeyType.HASH)
                     ),
@@ -36,8 +37,10 @@ public class HeroesTable {
                     ),
                     new ProvisionedThroughput(5L, 5L));
             table.waitForActive();
+            System.out.println("Successo " + table.getDescription().getTableStatus());
 
         } catch (Exception e) {
+            System.err.println("Não foi possível criar a tabela");
             System.err.println(e.getMessage());
         }
     }

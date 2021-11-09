@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 
 @Data
 @NoArgsConstructor
-@DynamoDBTable(tableName = "Heroes_Table")
+@DynamoDBTable(tableName = "Heroes_Table_01")
 public class Heroes {
 
     @Id
